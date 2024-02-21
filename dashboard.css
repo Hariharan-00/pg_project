@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: url('images/Bharathiar\ University.jpg') center/cover no-repeat; /* Replace 'background-image.jpg' with your actual image path */
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    color: #fff; /* Text color */
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px left;
+    padding: 20px;
+    background: rgba(54, 58, 58, 0.8); /* Semi-transparent background */
+    border-radius: 10px;
+    height:100vh;
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff; /* Link color */
+}
+
+a:hover {
+    color: #ffd700; /* Link color on hover */
+}
