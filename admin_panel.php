@@ -7,7 +7,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
     <div class="container">
@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="material_link">Material Link:</label>
-                <input type="text" class="form-control" id="material_link" name="material_link" required>
+                <input type="text" class="form-control" id="material_link" name="material_link" >
             </div>
 
             <div class="form-group">
