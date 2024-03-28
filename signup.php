@@ -27,9 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$signup_username', '$signup_registerNumber', '$signup_department', '$signup_courseName', '$signup_year', '$signup_phoneNumber', '$signup_password')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Signup successful!";
+        // echo "Signup successful!";
+        echo "<script>showToast('Signup successful!')</script>";
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        //echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<script>showToast('Error: " . $conn->error . "')</script>";
     }
 
     // Close connection
@@ -77,6 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <p>Already have an account? <a href="login.php">Login</a></p>
     </div>
+    <div id="toast-message"></div>
+
+    <script>
+        // JavaScript code for displaying toast messages
+        function showToast(message) {
+            var toast = document.getElementById('toast-message');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(function(){
+                toast.classList.remove('show');
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
+    </script>
 </body>
 </html>
 

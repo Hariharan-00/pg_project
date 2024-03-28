@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $signup_password = $_POST['signup_password'];
 
     // Check login credentials
-    $sql = "SELECT pk_id, signup_username, signup_password FROM cs_signup WHERE signup_username = '$signup_username'";
+    $sql = "SELECT pk_id, signup_username, signup_password, role FROM cs_signup WHERE signup_username = '$signup_username'";
     $result = $conn->query($sql);
 
     if (!$result) {
@@ -24,14 +24,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
            
-if (password_verify($signup_password, $row['signup_password'])) {
-    // Set session variables and redirect to the next page
-    $_SESSION['user_id'] = $row['pk_id'];  // Fix the column name here
-    header("Location: dashboard.php");
-    exit();
+            if (password_verify($signup_password, $row['signup_password'])) {
+                // Set session variables and redirect to the appropriate page
+                $_SESSION['user_id'] = $row['pk_id'];
 
-
-
+                if ($row['role'] == 'teacher') {
+                    header("Location: admin_panel.php");
+                } else {
+                    header("Location: dashboard.php");
+                }
+                exit();
             } else {
                 echo "Invalid username or password.";
             }
@@ -44,6 +46,7 @@ if (password_verify($signup_password, $row['signup_password'])) {
     $conn->close();
 }
 ?>
+
 
 
 
@@ -75,3 +78,5 @@ if (password_verify($signup_password, $row['signup_password'])) {
     </div>
 </body>
 </html>
+
+
